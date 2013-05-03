@@ -1,0 +1,15 @@
+goose:
+  Fields:
+    Name*:
+      Description: My Goose's name
+
+    Age:
+      Type: Integer
+
+    Color:
+      Valid values:
+        - Brown
+        - Black
+        - Grey
+        - White
+        - Other

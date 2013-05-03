@@ -1,0 +1,27 @@
+Individual:
+  Description: Person-y thing
+  Fields:
+    Name*:
+      Description: The thing you call the person
+
+    Age:
+      Type: Integer
+
+    Happy?:
+      Description: Is the individual happy?
+
+    Created At:
+      Type: DateTime
+
+    Groups:
+      Multiple: true
+      Type: Group
+
+    Favorites:
+      Description: Random things the individual likes
+      Multiple: true
+      Valid Values:
+        - Strawberries
+        - Monkeys
+        - Dogma
+        - Creationism

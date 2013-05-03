@@ -1,0 +1,8 @@
+Group:
+  Fields:
+    Name*:
+      Description: A thing
+      Validations: must be unique
+
+    Associated Organization?:
+      Description: Is this an organized group or is it hodge-podge?
