@@ -1,6 +1,8 @@
-require_relative 'sequel/builder'
+require_relative 'sequel/types'
 require_relative 'sequel/model'
 require_relative 'sequel/field'
+require_relative 'sequel/builder'
+require_relative 'sequel/entity_finder'
 
 module Spectifly
   module Sequel

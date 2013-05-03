@@ -14,10 +14,4 @@ describe Spectifly::Sequel::Model do
       model_for('goose').table_name.should == 'geese'
     end
   end
-
-  describe '.all' do
-    it 'returns the name of all the entity defintions in a path' do
-      described_class.all(base_fixture_path).map(&:to_s).should == %w(Goose Group Individual)
-    end
-  end
 end

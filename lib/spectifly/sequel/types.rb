@@ -15,6 +15,8 @@ module Spectifly
           'Type' => 'Integer'
         },
       }
+
+      All = Native + Extended.map { |k, v| v['Type'] }
     end
   end
 end

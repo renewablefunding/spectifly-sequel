@@ -5,11 +5,20 @@ module Spectifly
         Spectifly::Support.camelize(super)
       end
 
-      def to_new_column
+
+      # The entity_references param is the list of entity namesthat the caller
+      # knows about.  This lets us figure out whether the field should actually
+      # be the id of the entity/model being referenced by the field type.
+      def for_new_migration(entity_references = [])
         options = []
         options << ':null => false' if required?
         options << ':unique => true' if unique?
-        "#{type} :#{name}#{!options.empty? ? ', ' + options.join(', ') : ''}"
+        options_string = !options.empty? ? ', ' + options.join(', ') : ''
+        unless entity_references.include?(type)
+          "#{type} :#{name}#{options_string}"
+        else
+          "Integer :#{name}_id#{options_string}"
+        end
       end
 
       def unique?

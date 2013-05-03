@@ -40,16 +40,15 @@ describe Spectifly::Sequel::Field do
     end
   end
 
-  describe '#to_new_column' do
+  describe '#for_new_migration' do
     it 'returns a column definition with options for a required field' do
       field = described_class.new('Why am I required*')
-      field.to_new_column.should == 'String :why_am_i_required, :null => false'
+      field.for_new_migration.should == 'String :why_am_i_required, :null => false'
     end
 
-    it 'returns a foreign key column definition if the type is appropriate to such things' do
-      pending
+    it 'returns a reference to another table if there is an entity with the same name as the type' do
       field = described_class.new('Group', {'Type' => 'Group'})
-      field.to_new_column.should == 'foreign_key :group_id, :groups'
+      field.for_new_migration(['Group', 'Individual']).should == 'Integer :group_id'
     end
   end
 end
