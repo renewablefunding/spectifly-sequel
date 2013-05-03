@@ -1,4 +1,4 @@
-goose:
+Goose:
   Fields:
     Name*:
       Description: My Goose's name

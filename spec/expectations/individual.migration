@@ -3,20 +3,19 @@ Sequel.migration do
     create_table(:individuals) do
       primary_key :id
       String :name, :null => false
+      String :ssn, :null => false, :unique => true
       Integer :age
       Boolean :happy
       DateTime :created_at
+      Integer :group_id, :null => false
     end
 
-    create_table(:individuals_groups) do
-      primary_key [:individual_id, :group_id]
-      foreign_key :individual_id, :individuals
-      foreign_key :group_id, :groups
+    create_table(:individuals_favorites) do
+      primary_key :id
+      String :position_name, :null => false
+      Integer :individual_id, :null => false
     end
 
-    create_table(:individuals_positions) do
-      String :position_name
-      primary_key [:individual_id, :position_name]
-    end
+    add_index [:individual_id, :position_name], :unique => true
   end
 end

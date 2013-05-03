@@ -4,6 +4,10 @@ Individual:
     Name*:
       Description: The thing you call the person
 
+    Ssn*:
+      Description: We're assuming individuals are US citizens, I guess.
+      Unique: true
+
     Age:
       Type: Integer
 
@@ -13,8 +17,7 @@ Individual:
     Created At:
       Type: DateTime
 
-    Groups:
-      Multiple: true
+    Group*:
       Type: Group
 
     Favorites:
