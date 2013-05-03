@@ -2,9 +2,13 @@ require 'bundler'
 Bundler.setup
 Bundler::GemHelper.install_tasks
 
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+task :default => [:spec]
+
 require 'sequel'
-require 'spectifly/builder'
 require 'spectifly'
+require 'spectifly/builder'
 
 namespace 'spectifly' do
   namespace 'sequel' do
@@ -19,5 +23,3 @@ namespace 'spectifly' do
     task :default => [:generate_all]
   end
 end
-
-task :default => [:spec]
