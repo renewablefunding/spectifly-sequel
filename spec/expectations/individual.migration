@@ -12,10 +12,11 @@ Sequel.migration do
 
     create_table(:individuals_favorites) do
       primary_key :id
-      String :position_name, :null => false
-      Integer :individual_id, :null => false
+      foreign_key :individual_id, :individuals, :null => false
+      String :name, :null => false
     end
 
-    add_index [:individual_id, :position_name], :unique => true
+    add_index [:individual_id, :name], :individuals_favorites, :unique => true
+
   end
 end

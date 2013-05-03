@@ -4,7 +4,7 @@ module Spectifly
       require 'linguistics'
       Linguistics.use( :en, :classes => [self] )
 
-      attr_accessor :table_name, :display_name, :single_value_fields, :multiple_value_fields, :model_name
+      attr_accessor :table_name, :display_name, :single_value_fields, :multiple_value_fields, :model_name, :name_as_foreign_key
 
       def initialize(entity, fields)
         @entity = entity
@@ -12,6 +12,7 @@ module Spectifly
         @fields = fields
         @model_name = Spectifly::Support.camelize(display_name)
         @table_name = Spectifly::Support.tokenize(self.en.plural)
+        @name_as_foreign_key = Spectifly::Support.tokenize(display_name) + '_id'
         @single_value_fields = fields.select { |f| !f.multiple? }
         @multiple_value_fields = fields.select { |f| f.multiple? }
       end

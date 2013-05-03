@@ -41,14 +41,21 @@ describe Spectifly::Sequel::Field do
   end
 
   describe '#for_new_migration' do
+    Model = Struct.new(:entity_name, :table_name, :name_as_foreign_key)
+    let(:individual_model) { Model.new('individual', 'individuals', 'individual_id') }
     it 'returns a column definition with options for a required field' do
       field = described_class.new('Why am I required*')
-      field.for_new_migration.should == 'String :why_am_i_required, :null => false'
+      field.for_new_migration(individual_model).should == 'String :why_am_i_required, :null => false'
     end
 
     it 'returns a reference to another table if there is an entity with the same name as the type' do
       field = described_class.new('Group', {'Type' => 'Group'})
-      field.for_new_migration(['Group', 'Individual']).should == 'Integer :group_id'
+      field.for_new_migration(individual_model, ['Group', 'Individual']).should == 'Integer :group_id'
+    end
+
+    it 'returns a basic association table for a field with multiple native-type values' do
+      field = described_class.new('Animals',  {'Valid Values' => ['Giraffe', 'Puffin', 'Dog'], 'Multiple' => true})
+      field.for_new_migration(individual_model, []).should == File.read(expectation_path('animal_multiple_value_string_field'))
     end
   end
 end

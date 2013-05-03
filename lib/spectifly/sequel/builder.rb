@@ -25,7 +25,7 @@ module Spectifly
 
         def render path
           content = File.read(File.expand_path(path))
-          t = ERB.new(content)
+          t = ERB.new(content, nil, '-') # third param lets us use trim
           t.filename = File.expand_path(path)
           t.result(binding)
         end

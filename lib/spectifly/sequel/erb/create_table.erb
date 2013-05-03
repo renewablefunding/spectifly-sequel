@@ -1,4 +1,6 @@
     create_table(:<%= @model.table_name %>) do
-      primary_key :id<% @model.single_value_fields.each do |field| %>
-      <%= field.for_new_migration(@entity_names) %><% end %>
+      primary_key :id
+<% @model.single_value_fields.each do |field| -%>
+      <%= field.for_new_migration(@model, @entity_names) %>
+<% end -%>
     end

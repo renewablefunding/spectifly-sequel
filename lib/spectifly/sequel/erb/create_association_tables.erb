@@ -1,0 +1,4 @@
+
+<% @model.multiple_value_fields.each do |field| -%>
+<%= field.for_new_migration(@model, @entity_names) %>
+<% end -%>

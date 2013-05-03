@@ -1,0 +1,7 @@
+    create_table(:individuals_animals) do
+      primary_key :id
+      foreign_key :individual_id, :individuals, :null => false
+      String :name, :null => false
+    end
+
+    add_index [:individual_id, :name], :individuals_animals, :unique => true

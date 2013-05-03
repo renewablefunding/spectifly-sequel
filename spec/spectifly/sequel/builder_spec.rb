@@ -11,7 +11,6 @@ describe Spectifly::Sequel::Builder do
     end
 
     it 'works for associations' do
-      pending
       path_builder = Spectifly::Sequel::Builder.from_path(fixture_path('individual'))
       migration_path = expectation_path('individual')
       migration = path_builder.build

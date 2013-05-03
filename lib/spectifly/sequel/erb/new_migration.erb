@@ -1,4 +1,6 @@
 Sequel.migration do
   change do
-<%= render File.expand_path('create_table.erb', File.dirname(__FILE__)) %>  end
+<%= render File.expand_path('create_table.erb', File.dirname(__FILE__)) -%>
+<%= render File.expand_path('create_association_tables.erb', File.dirname(__FILE__)) -%>
+  end
 end
