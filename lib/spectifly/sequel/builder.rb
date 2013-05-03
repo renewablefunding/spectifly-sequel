@@ -6,7 +6,7 @@ module Spectifly
       def initialize(entity, options = {})
         super(entity, options)
         @entity_names = Spectifly::Sequel::EntityFinder.new(File.dirname(entity.path)).all.map(&:root)
-        @model = Spectifly::Sequel::Model.new(entity)
+        @model = Spectifly::Sequel::Model.new(entity, fields)
       end
 
       def field_class
@@ -19,20 +19,15 @@ module Spectifly
 
       private
         def migration_erb
-          field_definitions = ERB.new <<-EOF.strip
-<% fields.each do |field| %>
-      <%= field.for_new_migration(entity_names) %><% end %>
-EOF
-          template = ERB.new <<-EOF
-Sequel.migration do
-  change do
-    create_table(:#{@model.table_name}) do
-      primary_key :id#{field_definitions.result(binding)}
-    end
-  end
-end
-EOF
-          template.result(binding)
+          template_path = File.join(*File.dirname(__FILE__), 'erb', 'new_migration.erb')
+          render template_path
+        end
+
+        def render path
+          content = File.read(File.expand_path(path))
+          t = ERB.new(content)
+          t.filename = File.expand_path(path)
+          t.result(binding)
         end
     end
   end

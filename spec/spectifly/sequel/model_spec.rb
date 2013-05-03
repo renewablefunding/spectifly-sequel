@@ -5,7 +5,7 @@ describe Spectifly::Sequel::Model do
   describe '#table_name' do
     def model_for(entity_type)
       entity = Spectifly::Entity.new(fixture_path(entity_type))
-      described_class.new(entity)
+      described_class.new(entity, [])
     end
 
     it 'pluralizes and tokenizes an entity\'s root' do
