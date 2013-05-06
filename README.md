@@ -3,6 +3,20 @@
 An add-on to Spectifly, which uses entity definitions based on YAML, to
 create Sequel migrations and model files
 
+## Caveat
+
+This gem is not currently fit to be used - Migration text can be
+generated, but it doesn't get written to anywhere.
+
+Once that gets finished, more warnings:
+
+This is very much a work in progress and any migrations generated from
+the gem should be carefully scrutinized for correctness prior to
+applying them to your database.  Right now, the gem's output is only
+tested with Postgres and only creates new tables but does not update
+schema that already exists (though ideally, that would be a future
+feature).
+
 ## Installation
 
 Add this line to your application's Gemfile:
