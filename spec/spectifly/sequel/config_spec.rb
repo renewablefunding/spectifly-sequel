@@ -1,0 +1,51 @@
+require 'spec_helper'
+
+describe Spectifly::Sequel do
+  let(:path_to_config_file) { File.join(base_fixture_path, 'config_file.yml') }
+  let(:path_to_invalid_config_file) { File.join(base_fixture_path, 'invalid_config_file.yml') }
+  let(:config_hash) {
+    {
+      'migration_path' => 'foo/bar/baz.yml',
+      'entity_definition_path' => 'blah/blah/',
+    }
+  }
+  let(:friendly_config_instructions) {
+<<-INSTRUCTIONS
+Please format config files in the following manner:
+``- begin YAML
+Sequel:
+  Spectifly:
+    migration_path: PATH_TO_MIGRATION_DIRECTORY
+    entity_definition_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
+``- end YAML
+INSTRUCTIONS
+  }
+
+  it 'should allow config to be read from yaml in a path specified by the user' do
+    described_class.configure_with path_to_config_file
+    described_class.migration_path.should == '../tmp/migrations/'
+    described_class.entity_definition_path.should == './'
+  end
+
+  it 'should accept a config in hash format' do
+    described_class.configure config_hash
+    described_class.migration_path.should == 'foo/bar/baz.yml'
+    described_class.entity_definition_path.should == 'blah/blah/'
+  end
+
+  it 'gives reasonable, instructive error if YAML is misconfigured' do
+    lambda {
+      described_class.configure_with path_to_invalid_config_file
+    }.should raise_error(friendly_config_instructions)
+  end
+
+  it 'gives reasonable, instructive error if either path is not set' do
+    described_class.configure({:migration_path => nil, :entity_definition_path => nil})
+    lambda {
+      described_class.migration_path
+    }.should raise_error('Spectify::Sequel is not configured properly. "migration_path" must be set via YAML or a hash.')
+    lambda {
+      described_class.entity_definition_path
+    }.should raise_error('Spectify::Sequel is not configured properly. "entity_definition_path" must be set via YAML or a hash.')
+  end
+end

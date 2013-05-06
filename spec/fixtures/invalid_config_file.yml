@@ -1,0 +1,2 @@
+entity_definition_path: ./
+migration_path: ../tmp/migrations/

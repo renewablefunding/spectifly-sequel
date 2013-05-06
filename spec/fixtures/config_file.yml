@@ -1,0 +1,6 @@
+Spectifly: &default
+  entity_definition_path: ./
+  Sequel:
+    <<: *default
+    migration_path: ../tmp/migrations/
+

@@ -57,20 +57,29 @@ end
 
 ## Configuration
 
-Spectifly Sequel makes a few assumptions about where you put your entity
-definitions and migrations.  By default, migrations are put into
-`db/migrate` and entity definitions are read from `lib/entities`.  Both
-these locations can be configured by adding settings to your
-`~/.spectifly-sequel` file.  For example:
+Spectifly Sequel does not make any assumptions about where you put your
+entity definitions or migrations.  In order for the gem to run
+correctly, you'll need to specifly the path to a YAML file or set the
+config directly via a hash.
 
 ```ruby
-# To change entity definitions paths
---entity-def-path RELATIVE_PATH_TO_ENTITY_DEFINITIONS
+# to set via YAML file
+Spectifly::Sequel.configure_with PATH_TO_CONFIG_YAML
 
-# To change where migations are added
---migration-path RELATIVE_PATH_TO_SEQUEL_MIGRATIONS
+# to set via hash
+Spectifly::Sequel.configure {
+  'migration_path' => PATH_TO_MIGRATION_DIRECTORY
+  'entity_definition_path' => PATH_TO_ENTITY_DEFINITION_DIRECTORY
+}
 ```
 
+The YAML configuration file should look something like this:
+```yaml
+Sequel:
+  Spectifly:
+    migration_path: PATH_TO_MIGRATION_DIRECTORY
+    entity_definition_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
+```
 
 ## Contributing
 
