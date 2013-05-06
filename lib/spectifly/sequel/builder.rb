@@ -14,15 +14,11 @@ module Spectifly
       end
 
       def build
-        migration ||= migration_erb
+        template_path = File.join(*File.dirname(__FILE__), 'erb', 'new_migration.erb')
+        render template_path
       end
 
       private
-        def migration_erb
-          template_path = File.join(*File.dirname(__FILE__), 'erb', 'new_migration.erb')
-          render template_path
-        end
-
         def render path
           content = File.read(File.expand_path(path))
           t = ERB.new(content, nil, '-') # third param lets us use trim
