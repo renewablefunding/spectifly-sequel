@@ -1,6 +1,6 @@
 module Spectifly
   module Sequel
-    @valid_config_keys = [:migration_path, :entity_definition_path]
+    @valid_config_keys = [:migration_path, :entity_definition_path, :migration_version_type]
     @config = {}
 
     def self.configure_with(path_to_config_file)
@@ -23,6 +23,16 @@ module Spectifly
     def self.entity_definition_path
       @config[:entity_definition_path] or raise missing_configuration('entity_definition_path')
     end
+
+    def self.migration_version_type
+      type = @config[:migration_version_type].to_s
+      if %w(Timestamp Integer).include? type
+        type
+      else
+        'Timestamp'
+      end
+    end
+
 private
     def self.config_instructions 
 <<-INSTRUCTIONS

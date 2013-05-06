@@ -1,6 +1,7 @@
 Spectifly: &default
-  entity_definition_path: ./
+  entity_definition_path: ./spec/fixtures/
   Sequel:
     <<: *default
-    migration_path: ../tmp/migrations/
+    migration_path: ./spec/tmp/migrations/
+    migration_version_type: Integer
 

@@ -5,6 +5,10 @@ def spec_path
   File.dirname(__FILE__)
 end
 
+def migration_output_path
+  File.join(spec_path, 'tmp', 'migrations')
+end
+
 def base_expectation_path
   File.join(spec_path, 'expectations')
 end
