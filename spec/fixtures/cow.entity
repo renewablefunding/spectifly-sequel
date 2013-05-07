@@ -11,6 +11,9 @@ Cow:
       Type: Cow
       Multiple: true
 
+    Owner:
+      Type: Individual
+
     Color:
       Valid values:
         - Brown

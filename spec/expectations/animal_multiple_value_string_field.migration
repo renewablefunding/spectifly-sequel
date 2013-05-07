@@ -1,3 +1,4 @@
+
     create_table(:individuals_animals) do
       primary_key :id
       foreign_key :individual_id, :individuals, :null => false

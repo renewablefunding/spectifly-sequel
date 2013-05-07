@@ -5,6 +5,5 @@ Sequel.migration do
       String :name, :null => false, :unique => true
       Boolean :associated_organization
     end
-
   end
 end

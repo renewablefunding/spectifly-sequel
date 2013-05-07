@@ -1,3 +1,4 @@
+
     create_table(:<%= @model.table_name %>_<%= @field.name %>) do
       primary_key :id
       foreign_key :<%= @model.name_as_foreign_key %>, :<%= @model.table_name %>, :null => false

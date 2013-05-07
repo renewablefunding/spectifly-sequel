@@ -17,6 +17,5 @@ Sequel.migration do
     end
 
     add_index [:individual_id, :name], :individuals_favorites, :unique => true
-
   end
 end

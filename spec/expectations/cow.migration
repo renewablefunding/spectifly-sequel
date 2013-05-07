@@ -4,6 +4,7 @@ Sequel.migration do
       primary_key :id
       String :name, :null => false
       Integer :age
+      Integer :owner_id
       String :color
     end
 
@@ -13,6 +14,5 @@ Sequel.migration do
     end
 
     add_index [:cow_id, :calf_id], :kine_calves, :unique => true
-
   end
 end

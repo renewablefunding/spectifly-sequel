@@ -20,6 +20,11 @@ Individual:
     Group*:
       Type: Group
 
+    Cows:
+      Description: Cows owned by an individual
+      Type: Cow
+      Multiple: True
+
     Favorites:
       Description: Random things the individual likes
       Multiple: true
