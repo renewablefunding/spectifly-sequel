@@ -23,7 +23,7 @@ module Spectifly
         else
           last_migration = 0
           length = 3
-          Dir.glob("#{migration_output_path}/*.rb") do |rb_file|
+          Dir.glob("#{@migration_path}/*.rb") do |rb_file|
             migration = File.basename(rb_file).split('_').first
             if migration.to_i > last_migration
               last_migration = migration.to_i
