@@ -12,6 +12,11 @@ describe Spectifly::Sequel::Field do
       field = described_class.new('Can I spell misspelled?')
       field.type.should == 'Boolean'
     end
+
+    it 'returns the base type of an extended type' do
+      field = described_class.new('OneMillionDollars', { 'Type' => 'Currency' })
+      field.type.should == 'Numeric'
+    end
   end
 
   describe 'uniqueness restriction' do

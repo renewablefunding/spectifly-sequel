@@ -2,7 +2,12 @@ module Spectifly
   module Sequel
     class Field < Spectifly::Field
       def type
-        Spectifly::Support.camelize(super)
+        field_type = super
+        if base_type = Spectifly::Sequel::Types::Extended[field_type]
+          field_type = base_type['Type']
+        end
+
+        Spectifly::Support.camelize(field_type)
       end
 
       # The entity_references param is the list of entity namesthat the caller

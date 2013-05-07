@@ -14,6 +14,9 @@ Cow:
     Owner:
       Type: Individual
 
+    Cost*:
+      Type: Currency
+
     Color:
       Valid values:
         - Brown

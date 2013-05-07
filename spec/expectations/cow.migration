@@ -5,6 +5,7 @@ Sequel.migration do
       String :name, :null => false
       Integer :age
       Integer :owner_id
+      Numeric :cost, :null => false
       String :color
     end
 
