@@ -1,10 +1,10 @@
 module Spectifly
   module Sequel
     class MigrationGenerator
-      def initialize(entity, migration_path=nil, entity_path=nil, migration_version_type='Integer')
+      def initialize(entity, migration_path=nil, entity_path=nil, migration_version_type=nil)
         @migration_path = File.expand_path(migration_path || Spectifly::Sequel.migration_path)
         @entity_definition_path = File.expand_path(entity_path || Spectifly::Sequel.entity_definition_path)
-        @migration_version_type = migration_version_type
+        @migration_version_type = migration_version_type || Spectifly::Sequel.migration_version_type
         @builder = Spectifly::Sequel::Builder.from_path(File.join(@entity_definition_path, entity + '.entity'))
       end
 
