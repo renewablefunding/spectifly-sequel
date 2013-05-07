@@ -11,7 +11,7 @@ describe Spectifly::Sequel::Model do
     it 'pluralizes and tokenizes an entity\'s root' do
       model_for('individual').table_name.should == 'individuals'
       
-      model_for('goose').table_name.should == 'geese'
+      model_for('cow').table_name.should == 'kine'
     end
   end
 end

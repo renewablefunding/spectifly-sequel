@@ -1,0 +1,18 @@
+Sequel.migration do
+  change do
+    create_table(:kine) do
+      primary_key :id
+      String :name, :null => false
+      Integer :age
+      String :color
+    end
+
+    create_table(:kine_calves) do
+      foreign_key :cow_id, :kine, :null => false
+      foreign_key :calf_id, :kine, :null => false
+    end
+
+    add_index [:cow_id, :calf_id], :kine_calves, :unique => true
+
+  end
+end

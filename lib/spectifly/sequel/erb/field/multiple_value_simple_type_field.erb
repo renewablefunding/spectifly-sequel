@@ -1,0 +1,7 @@
+    create_table(:<%= @model.table_name %>_<%= @field.name %>) do
+      primary_key :id
+      foreign_key :<%= @model.name_as_foreign_key %>, :<%= @model.table_name %>, :null => false
+      <%= @field.type %> :name, :null => false
+    end
+
+    add_index [:<%=@model.name_as_foreign_key %>, :name], :<%= @model.table_name %>_<%= @field.name %>, :unique => true

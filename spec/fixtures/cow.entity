@@ -1,10 +1,15 @@
-Goose:
+Cow:
   Fields:
     Name*:
-      Description: My Goose's name
+      Description: My Cow's name
 
     Age:
       Type: Integer
+
+    Calves:
+      Description: Baby cow
+      Type: Cow
+      Multiple: true
 
     Color:
       Valid values:

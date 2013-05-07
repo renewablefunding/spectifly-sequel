@@ -2,10 +2,10 @@ require 'erb'
 module Spectifly
   module Sequel
     class Builder < Spectifly::Builder
-      attr_accessor :entity_names, :model
+      attr_accessor :entities, :model
       def initialize(entity, options = {})
         super(entity, options)
-        @entity_names = Spectifly::Sequel::EntityFinder.new(File.dirname(entity.path)).all.map(&:root)
+        @entities = Spectifly::Sequel::EntityFinder.new(File.dirname(entity.path)).all
         @model = Spectifly::Sequel::Model.new(entity, fields)
       end
 

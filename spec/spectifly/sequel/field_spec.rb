@@ -50,7 +50,10 @@ describe Spectifly::Sequel::Field do
 
     it 'returns a reference to another table if there is an entity with the same name as the type' do
       field = described_class.new('Group', {'Type' => 'Group'})
-      field.for_new_migration(individual_model, ['Group', 'Individual']).should == 'Integer :group_id'
+      entities = ['group', 'individual'].map do |entity|
+        Spectifly::Entity.new(fixture_path(entity))
+      end
+      field.for_new_migration(individual_model, entities).should == 'Integer :group_id'
     end
 
     it 'returns a basic association table for a field with multiple native-type values' do
