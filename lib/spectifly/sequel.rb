@@ -1,4 +1,5 @@
 require 'active_support/inflector/methods'
+require 'spectifly'
 require_relative 'sequel/config'
 require_relative 'sequel/types'
 require_relative 'sequel/model'
@@ -8,6 +9,7 @@ require_relative 'sequel/builder'
 require_relative 'sequel/entity_finder'
 require_relative 'sequel/migration_generator'
 require_relative 'sequel/version'
+require_relative 'sequel/tasks'
 
 module Spectifly
   module Sequel
