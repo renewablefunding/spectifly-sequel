@@ -4,16 +4,16 @@ Sequel.migration do
       primary_key :id
       String :name, :null => false
       Integer :age
-      Integer :owner_id
       Numeric :cost, :null => false
       String :color
+      foreign_key :owner_id, :individuals
     end
 
-    create_table(:kine_calves) do
+    create_table(:calves_kine) do
       foreign_key :cow_id, :kine, :null => false
       foreign_key :calf_id, :kine, :null => false
     end
 
-    add_index [:cow_id, :calf_id], :kine_calves, :unique => true
+    add_index [:cow_id, :calf_id], :calves_kine, :unique => true
   end
 end

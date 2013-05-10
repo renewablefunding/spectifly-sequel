@@ -1,3 +1,4 @@
 <% @model.multiple_value_fields.each do |field| -%>
 <%= field.for_new_migration(@model, @entities) -%>
 <% end -%>
+<%= render File.expand_path('field/many_to_many_association.erb', File.dirname(__FILE__)) -%>

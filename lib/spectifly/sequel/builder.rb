@@ -5,7 +5,7 @@ module Spectifly
       attr_accessor :entities, :model
       def initialize(entity, options = {})
         super(entity, options)
-        @entities = Spectifly::Sequel::EntityFinder.new(File.dirname(entity.path)).all
+        @entities = Spectifly::Entity.from_directory(File.dirname(entity.path))
         @model = Spectifly::Sequel::Model.new(entity, fields)
       end
 

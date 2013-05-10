@@ -6,14 +6,6 @@ Cow:
     Age:
       Type: Integer
 
-    Calves:
-      Description: Baby cow
-      Type: Cow
-      Multiple: true
-
-    Owner:
-      Type: Individual
-
     Cost*:
       Type: Currency
 
@@ -24,3 +16,19 @@ Cow:
         - Grey
         - White
         - Other
+
+  Related Entities:
+    Has Many:
+      Calves:
+        Description: Baby cow
+        Type: Cow
+
+    Belongs To Many:
+      Cow*:
+        Description: Parent cows
+        Type: Cow
+
+    Belongs To:
+      Owner:
+        Type: Individual
+

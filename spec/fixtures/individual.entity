@@ -17,14 +17,6 @@ Individual:
     Created At:
       Type: DateTime
 
-    Group*:
-      Type: Group
-
-    Cows:
-      Description: Cows owned by an individual
-      Type: Cow
-      Multiple: True
-
     Favorites:
       Description: Random things the individual likes
       Multiple: true
@@ -33,3 +25,13 @@ Individual:
         - Monkeys
         - Dogma
         - Creationism
+
+  Related Entities:
+    Belongs To:
+      Group*:
+        Type: Group
+
+    Has Many:
+      Cows:
+        Description: Cows owned by an individual
+        Type: Cow

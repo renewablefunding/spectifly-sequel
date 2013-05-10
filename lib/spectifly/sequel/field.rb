@@ -17,21 +17,6 @@ module Spectifly
         @field_for_migration = Spectifly::Sequel::FieldForMigration.new(self, model, entity_references)
         @field_for_migration.render
       end
-
-      def unique?
-        restrictions['unique'] == true
-      end
-
-      def extract_restrictions
-        super
-        unique_validation = validations.any? { |v| v =~ /must be unique/i }
-        unique_attribute = attributes.delete("Unique")
-        if (unique_validation && unique_attribute.nil?) ^ (unique_attribute.to_s == "true")
-          @restrictions['unique'] = true
-        elsif unique_validation && !["true", ""].include?(unique_attribute.to_s)
-          raise "Field #{name} has contradictory information about uniqueness."
-        end
-      end
     end
   end
 end

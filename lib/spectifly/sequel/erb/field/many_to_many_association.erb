@@ -1,7 +1,9 @@
+<% @model.has_and_belong_to_many.each do |relationship| -%>
 
-    create_table(:<%= @model.table_name %>_<%= @field_name %>) do
+    create_table(:<%= relationship.many_to_many_table_name %>) do
       foreign_key :<%= @model.name_as_foreign_key %>, :<%= @model.table_name %>, :null => false
-      foreign_key :<%= @field_as_foreign_key %>, :<%= @model_for_field.table_name %>, :null => false
+      foreign_key :<%= relationship.field_name %>, :<%= relationship.table_name %>, :null => false
     end
 
-    add_index [:<%=@model.name_as_foreign_key -%>, :<%=@field_as_foreign_key -%>], :<%= @model.table_name -%>_<%= @field.name -%>, :unique => true
+    add_index [:<%=@model.name_as_foreign_key -%>, :<%= relationship.field_name -%>], :<%= relationship.many_to_many_table_name -%>, :unique => true
+<% end -%>

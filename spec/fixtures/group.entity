@@ -6,3 +6,8 @@ Group:
 
     Associated Organization?:
       Description: Is this an organized group or is it hodge-podge?
+
+  Related Entities:
+    Has Many:
+      Individuals:
+        Type: Individual

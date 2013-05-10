@@ -7,7 +7,7 @@ Sequel.migration do
       Integer :age
       Boolean :happy
       DateTime :created_at
-      Integer :group_id, :null => false
+      foreign_key :group_id, :groups, :null => false
     end
 
     create_table(:individuals_favorites) do
