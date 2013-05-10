@@ -1,8 +1,11 @@
 GIT
   remote: git@github.com:renewablefunding/spectifly.git
-  revision: efcf86d297aed037fe3e4067c9abd2a862d1d950
+  revision: 1854acc2552093529ca220d72c3232dc8ad43df8
   specs:
     spectifly (0.0.1)
+      builder
+      json
+      rake
 
 PATH
   remote: .
@@ -28,6 +31,7 @@ GEM
     debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
     i18n (0.6.4)
+    json (1.7.7)
     multi_json (1.7.2)
     rake (10.0.4)
     rspec (2.13.0)

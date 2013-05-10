@@ -1,7 +1,7 @@
 require 'erb'
 module Spectifly
   module Sequel
-    class Builder < Spectifly::Builder
+    class Builder < Spectifly::Base::Builder
       attr_accessor :entities, :model
       def initialize(entity, options = {})
         super(entity, options)

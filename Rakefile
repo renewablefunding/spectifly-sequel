@@ -8,6 +8,6 @@ task :default => [:spec]
 
 require 'sequel'
 require 'spectifly'
-require 'spectifly/builder'
+require 'spectifly/base'
 require 'spectifly/sequel'
 require 'spectifly/sequel/tasks'

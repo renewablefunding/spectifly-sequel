@@ -1,6 +1,6 @@
 module Spectifly
   module Sequel
-    class Field < Spectifly::Field
+    class Field < Spectifly::Base::Field
       def type
         field_type = super
         if base_type = Spectifly::Sequel::Types::Extended[field_type]
