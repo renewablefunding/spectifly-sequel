@@ -11,3 +11,7 @@ Group:
     Has Many:
       Individuals:
         Type: Individual
+
+    Has One:
+      Leader:
+        Type: Individual

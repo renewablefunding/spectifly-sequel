@@ -4,6 +4,7 @@ Sequel.migration do
       primary_key :id
       String :name, :null => false, :unique => true
       Boolean :associated_organization
+      foreign_key :leader_id, :individuals
     end
   end
 end
