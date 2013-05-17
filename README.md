@@ -5,11 +5,6 @@ create Sequel migrations and model files
 
 ## Caveat
 
-This gem is not currently fit to be used - Migration text can be
-generated, but it doesn't get written to anywhere.
-
-Once that gets finished, more warnings:
-
 This is very much a work in progress and any migrations generated from
 the gem should be carefully scrutinized for correctness prior to
 applying them to your database.  Right now, the gem's output is only
@@ -27,7 +22,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Once on rubygems, you'll also be able to install it yourself as:
 
     $ gem install spectifly-sequel
 
