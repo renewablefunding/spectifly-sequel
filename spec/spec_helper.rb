@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'spectifly'
 require_relative '../lib/spectifly/sequel'
 
