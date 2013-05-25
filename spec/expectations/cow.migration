@@ -6,6 +6,8 @@ Sequel.migration do
       Integer :age
       Numeric :cost, :null => false
       String :color
+      DateTime :created_at, :null => false
+      DateTime :updated_at, :null => false
       foreign_key :owner_id, :individuals
     end
 

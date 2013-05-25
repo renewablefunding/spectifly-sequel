@@ -7,6 +7,7 @@ Sequel.migration do
       Integer :age
       Boolean :happy
       DateTime :created_at
+      DateTime :updated_at, :null => false
       foreign_key :group_id, :groups, :null => false
     end
 
@@ -14,6 +15,8 @@ Sequel.migration do
       primary_key :id
       foreign_key :individual_id, :individuals, :null => false
       String :name, :null => false
+      DateTime :created_at, :null => false
+      DateTime :updated_at, :null => false
     end
 
     add_index [:individual_id, :name], :individuals_favorites, :unique => true

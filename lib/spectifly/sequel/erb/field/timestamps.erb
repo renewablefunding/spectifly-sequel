@@ -1,0 +1,6 @@
+<% unless model.single_value_fields.map(&:name).include?('created_at') -%>
+      DateTime :created_at, :null => false
+<% end -%>
+<% unless model.single_value_fields.map(&:name).include?('updated_at') -%>
+      DateTime :updated_at, :null => false
+<% end -%>

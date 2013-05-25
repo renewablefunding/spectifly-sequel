@@ -3,6 +3,7 @@
 <% @model.single_value_fields.each do |field| -%>
       <%= field.for_new_migration(@model, @entities) %>
 <% end -%>
+<%= render File.expand_path('field/timestamps.erb', File.dirname(__FILE__)) -%>
 <% @model.foreign_keys.each do |key| -%>
       foreign_key :<%= key.field_name %>, :<%= key.table_name %><%= ", :unique => true" if key.unique -%><%= ", :null => false" if key.required %>
 <% end -%>
