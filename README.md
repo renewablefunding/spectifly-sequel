@@ -84,10 +84,8 @@ Spectifly::Sequel.configure {
 
 The YAML configuration file should look something like this:
 ```yaml
-Sequel:
-  Spectifly:
-    migration_path: PATH_TO_MIGRATION_DIRECTORY
-    entity_definition_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
+sequel_migration_path: PATH_TO_MIGRATION_DIRECTORY
+entity_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
 ```
 
 ## Contributing

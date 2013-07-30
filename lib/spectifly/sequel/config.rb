@@ -1,15 +1,10 @@
 module Spectifly
   module Sequel
-    @valid_config_keys = [:migration_path, :entity_definition_path, :migration_version_type]
+    @valid_config_keys = [:sequel_migration_path, :entity_path, :sequel_migration_version_type]
     @config = {}
 
     def self.configure_with(path_to_config_file)
-      begin
-        config = YAML.load_file(path_to_config_file)['Spectifly']['Sequel']
-      rescue NoMethodError
-        raise config_instructions
-      end
-      configure(config)
+      configure YAML.load_file(path_to_config_file)
     end
 
     def self.configure(opts)
@@ -17,15 +12,15 @@ module Spectifly
     end
 
     def self.migration_path
-      @config[:migration_path] or raise missing_configuration('migration_path')
+      @config[:sequel_migration_path] or raise missing_configuration('sequel_migration_path')
     end
 
     def self.entity_definition_path
-      @config[:entity_definition_path] or raise missing_configuration('entity_definition_path')
+      @config[:entity_path] or raise missing_configuration('entity_path')
     end
 
     def self.migration_version_type
-      type = @config[:migration_version_type].to_s
+      type = @config[:sequel_migration_version_type].to_s
       if %w(Timestamp Integer).include? type
         type
       else
@@ -38,10 +33,8 @@ private
 <<-INSTRUCTIONS
 Please format config files in the following manner:
 ``- begin YAML
-Sequel:
-  Spectifly:
-    migration_path: PATH_TO_MIGRATION_DIRECTORY
-    entity_definition_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
+sequel_migration_path: PATH_TO_MIGRATION_DIRECTORY
+entity_path: PATH_TO_ENTITY_DEFINITION_DIRECTORY
 ``- end YAML
 INSTRUCTIONS
     end
